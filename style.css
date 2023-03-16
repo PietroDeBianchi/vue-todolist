@@ -9,6 +9,11 @@ body {
     background-color: #7ECDFB;
 }
 
+.flexer {
+    display: flex;
+    align-items: center;
+}
+
 /* HEADER STYLE PART */
 
 header {
@@ -27,7 +32,7 @@ header h1 {
 
 /*  MAIN STYLE PART */
 
-main {
+#app {
     width: 55%;
     margin: auto;
     margin-top: 3%;
@@ -77,22 +82,25 @@ hr {
 
 #container p {
     font-size: 20px;
+    margin-left: 8px;
 }
 
 .taskLine {
     padding: 8px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgb(230, 226, 226);
 }
 
 .myTask {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    list-style: none;
+    width: 100%;
 }
 
+.singleItem {
+    justify-content: space-between;
+}
+
+/* TRASH BUTTON STYLE */
 .trash {
     font-size: 0;
 }

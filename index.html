@@ -20,7 +20,8 @@
         <h1>Toboolists</h1>
     </header>
 
-    <main>
+    <div id="app">
+
         <div id="button-section">
             <input type="text" placeholder="Keep Track of your Daily Tasks">
             <button><i class="fa-solid fa-plus"></i></button>
@@ -29,20 +30,25 @@
         <hr/>
         <div id="container">
             <h2>To Do List:</h2>
-            <div class="taskLine">
-                <div class="myTask">
-                    <input type="checkbox">
-                    <p>Qarterly News Letter</p>
-                </div>
-                <div class="trash">
-                    <i class="fa-solid fa-trash"></i>
-                </div>
+            <div class="taskLine flexer">
+                <ul v-if="tasklist.length > 0" class="myTask">
+                    <li v-for="task in tasklist" class="flexer singleItem">
+                      <div class="flexer">
+                        <input type="checkbox">
+                        <p>{{task}}</p>
+                      </div>
+                      <div class="trash">
+                        <i class="fa-solid fa-trash"></i>
+                      </div>
+                    </li>
+                </ul>
+                <div v-else>No Tasks</div>
             </div>
         </div>
 
-    </main>
+    </div>
     
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
-    <script src="/main.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>
