@@ -23,22 +23,24 @@
     <div id="app">
 
         <div id="button-section">
-            <input type="text" placeholder="Keep Track of your Daily Tasks">
-            <button><i class="fa-solid fa-plus"></i></button>
-
+            <input type="text" placeholder="Keep Track of your Daily Tasks" v-model="newTask" keyup.eneter="newTask">
+            <button><i @click="addTask" class="fa-solid fa-plus"></i></button>
+            <div v-show="error">Error, the task needs at least 5 words</div>
         </div>
+
         <hr/>
+
         <div id="container">
             <h2>To Do List:</h2>
             <div class="taskLine flexer">
                 <ul v-if="tasklist.length > 0" class="myTask">
-                    <li v-for="task in tasklist" class="flexer singleItem">
+                    <li v-for="(task, index) in tasklist" class="flexer singleItem">
                       <div class="flexer">
                         <input type="checkbox">
                         <p>{{task}}</p>
                       </div>
                       <div class="trash">
-                        <i class="fa-solid fa-trash"></i>
+                        <i @click="removeTask(index)" class="fa-solid fa-trash"></i>
                       </div>
                     </li>
                 </ul>
