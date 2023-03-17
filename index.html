@@ -23,7 +23,7 @@
     <div id="app">
 
         <div id="button-section">
-            <input type="text" placeholder="Keep Track of your Daily Tasks" v-model="newTask" keyup.eneter="newTask">
+            <input type="text" placeholder="Keep Track of your Daily Tasks" v-model="newTask" @keyup.enter="addTask">
             <button><i @click="addTask" class="fa-solid fa-plus"></i></button>
             <div v-show="error">Error, the task needs at least 5 words</div>
         </div>
@@ -44,7 +44,9 @@
                       </div>
                     </li>
                 </ul>
-                <div v-else>No Tasks</div>
+                <div v-else>
+                    No Tasks
+                </div>
             </div>
         </div>
 

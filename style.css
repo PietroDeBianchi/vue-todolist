@@ -61,11 +61,17 @@ hr {
     border: 1px solid lightgray;
 }
 
+#button-section button:active {
+    box-shadow: 0 0 10px rgba(15, 48, 179, 0.349);
+    border-color: #000000;
+}
+
 #button-section input {
     width: 60%;
     border-radius: 6px;
     height: 30px;
     padding: 6px;
+    margin-right: 8px;
     border: none;
 }
 
