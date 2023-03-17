@@ -9,11 +9,19 @@ createApp({
       // boolean variable to indicate whether there is an error or not
       error: false,
       // variable to hold the user input for a new task
-      newTask: '',
+      newTask: { 
+        name: '', 
+        completed: false 
+      },
       // array of tasks to display
       tasklist: [ 
-        'Example task'
-      ]
+        { 
+          name: 'Example task', 
+          completed: false 
+        }
+      ],
+      // Add an array to track completed tasks
+      tasklistCompleted: [ false ]
     };
   },
 
@@ -27,18 +35,18 @@ createApp({
     // method to add a new task to the tasklist
     addTask() {
       // check if the length of the newTask is greater than or equal to 5 characters
-      if (this.newTask.length >= 5) {
+      if (this.newTask.name.length >= 5) {
         // add the newTask to the tasklist array
-        this.tasklist.push(this.newTask)
+        this.tasklist.push(this.newTask);
         // reset the value of newTask to an empty string
-        this.newTask = "";
+        this.newTask = { name: '', completed: false };
         // set error to false since there is no error
         this.error = false;
       } else {
         // set error to true since there is an error
         this.error = true;
       }
-    },
+    },    
 
     // method to check the minimum length of the new task input
     minLength() {
@@ -49,10 +57,19 @@ createApp({
         // set error to true since there is an error
         this.error = true;
       }
-    }
+    },
+
+    // method to toggle the completion status of a task
+    toggleTask(index) {
+      // toggle the completion status of the task at the given index
+      this.tasklist[index].completed = !this.tasklist[index].completed;
+      // update the tasklistCompleted array with the current completion status
+      this.tasklistCompleted[index] = this.tasklist[index].completed;
+    },    
 
   }
 
 // mount the app to the #app element in the HTML
 }).mount('#app');
+
 

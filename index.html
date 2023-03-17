@@ -23,7 +23,7 @@
     <div id="app">
 
         <div id="button-section">
-            <input type="text" placeholder="Keep Track of your Daily Tasks" v-model="newTask" @keyup.enter="addTask">
+            <input type="text" placeholder="Keep Track of your Daily Tasks" v-model="newTask.name" @keyup.enter="addTask">
             <button><i @click="addTask" class="fa-solid fa-plus"></i></button>
             <div v-show="error">Error, the task needs at least 5 words</div>
         </div>
@@ -36,8 +36,8 @@
                 <ul v-if="tasklist.length > 0" class="myTask">
                     <li v-for="(task, index) in tasklist" class="flexer singleItem">
                       <div class="flexer">
-                        <input type="checkbox">
-                        <p>{{task}}</p>
+                        <input @click="toggleTask(index)" type="checkbox">
+                        <p class="" :class="{ 'line': tasklistCompleted[index] }">{{ task.name }}</p>
                       </div>
                       <div class="trash">
                         <i @click="removeTask(index)" class="fa-solid fa-trash"></i>
